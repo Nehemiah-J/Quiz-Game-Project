@@ -1,0 +1,4 @@
+C:\Users\nehmi\source\repos\Quiz-Game-Project\Quiz Application\Quiz Application\x64\Debug\Quiz Application.vcxproj.AssemblyReference.cache
+C:\Users\nehmi\source\repos\Quiz-Game-Project\Quiz Application\Quiz Application\x64\Debug\QuizApplication.MyForm.resources
+C:\Users\nehmi\source\repos\Quiz-Game-Project\Quiz Application\Quiz Application\x64\Debug\Quiz Application.vcxproj.GenerateResource.cache
+C:\Users\nehmi\source\repos\Quiz-Game-Project\Quiz Application\Quiz Application\x64\Debug\QuizApplication.curGame.resources

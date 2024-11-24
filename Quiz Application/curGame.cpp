@@ -1,0 +1,2 @@
+#include "curGame.h"
+
