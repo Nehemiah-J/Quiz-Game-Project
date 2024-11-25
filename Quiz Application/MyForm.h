@@ -40,7 +40,12 @@ namespace QuizApplication {
 		}
 	private: System::Windows::Forms::Button^ startButton;
 	private: System::Windows::Forms::Label^ nameLabel;
-	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ TimerLabel;
+
+
+	private: System::Windows::Forms::Timer^ timer1;
+
+	private: System::ComponentModel::IContainer^ components;
 	protected:
 
 	protected:
@@ -49,7 +54,7 @@ namespace QuizApplication {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -58,9 +63,11 @@ namespace QuizApplication {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->startButton = (gcnew System::Windows::Forms::Button());
 			this->nameLabel = (gcnew System::Windows::Forms::Label());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->TimerLabel = (gcnew System::Windows::Forms::Label());
+			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->SuspendLayout();
 			// 
 			// startButton
@@ -84,22 +91,27 @@ namespace QuizApplication {
 			this->nameLabel->TabIndex = 1;
 			this->nameLabel->Text = L"Nehemiah\'s Quiz Game";
 			// 
-			// label1
+			// TimerLabel
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(106, 63);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(44, 16);
-			this->label1->TabIndex = 2;
-			this->label1->Text = L"label1";
-			this->label1->Click += gcnew System::EventHandler(this, &MyForm::label1_Click);
+			this->TimerLabel->AutoSize = true;
+			this->TimerLabel->Location = System::Drawing::Point(106, 63);
+			this->TimerLabel->Name = L"TimerLabel";
+			this->TimerLabel->Size = System::Drawing::Size(42, 16);
+			this->TimerLabel->TabIndex = 2;
+			this->TimerLabel->Text = L"Timer";
+			this->TimerLabel->Click += gcnew System::EventHandler(this, &MyForm::TimerLabel_Click);
+			// 
+			// timer1
+			// 
+			this->timer1->Interval = 1000;
+			this->timer1->Tick += gcnew System::EventHandler(this, &MyForm::timer1_Tick);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1097, 523);
-			this->Controls->Add(this->label1);
+			this->Controls->Add(this->TimerLabel);
 			this->Controls->Add(this->nameLabel);
 			this->Controls->Add(this->startButton);
 			this->Name = L"MyForm";
@@ -111,17 +123,7 @@ namespace QuizApplication {
 		}
 #pragma endregion
 
-		void timer()
-		{
-			int counter = 10;
-
-			while (counter >= 0) {
-				label1->Text = counter.ToString();
-
-				std::this_thread::sleep_for(std::chrono::seconds(1)); // Wait 1 second
-				counter--;
-			}
-		}
+	int counter = 0;
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 
@@ -129,12 +131,25 @@ namespace QuizApplication {
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		label1->Text = "60";
+		counter = 60;
 
-		timer();
+		TimerLabel->Text = "60";
+
+		timer1->Start();
 	}
 
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void TimerLabel_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+
+		TimerLabel->Text = counter.ToString();
+		counter--;
+
+		if (counter <= 0) 
+		{
+			TimerLabel->Text = "0";
+			timer1->Stop();
+		}
+	}
+};
 }
