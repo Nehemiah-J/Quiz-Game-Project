@@ -120,14 +120,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Answer.cpp" />
     <ClCompile Include="curGame.cpp" />
+    <ClCompile Include="database.cpp" />
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="Question.cpp" />
+    <ClCompile Include="TestForm1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Answer.h" />
     <ClInclude Include="curGame.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="database.h" />
     <ClInclude Include="MyForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Question.h" />
+    <ClInclude Include="TestForm1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -137,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestForm1.resx">
+      <DependentUpon>TestForm1.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

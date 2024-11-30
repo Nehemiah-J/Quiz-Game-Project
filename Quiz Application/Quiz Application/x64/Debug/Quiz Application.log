@@ -1,4 +1,6 @@
 ﻿  MyForm.cpp
 C:\Users\nehmi\source\repos\Quiz-Game-Project\Quiz Application\MyForm.cpp(9,6): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
-  curGame.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  TestForm1.cpp
+  Generating Code...
+  Answer.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   Quiz Application.vcxproj -> C:\Users\nehmi\source\repos\Quiz-Game-Project\Quiz Application\x64\Debug\Quiz Application.exe

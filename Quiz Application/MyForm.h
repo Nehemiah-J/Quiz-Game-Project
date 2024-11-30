@@ -1,6 +1,8 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include "curGame.h"
+#include "TestForm1.h"
 
 #pragma once
 
@@ -131,11 +133,14 @@ namespace QuizApplication {
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		counter = 60;
+		//curGame^ newGame = gcnew curGame();
+		TestForm1^ newTest = gcnew TestForm1();
 
-		TimerLabel->Text = "60";
-
-		timer1->Start();
+		newTest->Show();
+		this->Hide();
+		//newGame->Show(this);
+		
+		
 	}
 
 	private: System::Void TimerLabel_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -153,3 +158,4 @@ namespace QuizApplication {
 	}
 };
 }
+
