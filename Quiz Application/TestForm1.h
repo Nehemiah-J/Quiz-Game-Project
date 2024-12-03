@@ -1,4 +1,7 @@
 
+#include "Question.h"
+#include "Answer.h"
+#include "Database.h"
 
 #pragma once
 
@@ -111,9 +114,9 @@ namespace QuizApplication {
 			// 
 			// AnswerButton1
 			// 
-			this->AnswerButton1->Location = System::Drawing::Point(353, 230);
+			this->AnswerButton1->Location = System::Drawing::Point(318, 211);
 			this->AnswerButton1->Name = L"AnswerButton1";
-			this->AnswerButton1->Size = System::Drawing::Size(75, 23);
+			this->AnswerButton1->Size = System::Drawing::Size(138, 58);
 			this->AnswerButton1->TabIndex = 3;
 			this->AnswerButton1->Text = L"Answer 1";
 			this->AnswerButton1->UseVisualStyleBackColor = true;
@@ -121,9 +124,9 @@ namespace QuizApplication {
 			// 
 			// AnswerButton2
 			// 
-			this->AnswerButton2->Location = System::Drawing::Point(635, 230);
+			this->AnswerButton2->Location = System::Drawing::Point(613, 211);
 			this->AnswerButton2->Name = L"AnswerButton2";
-			this->AnswerButton2->Size = System::Drawing::Size(75, 23);
+			this->AnswerButton2->Size = System::Drawing::Size(125, 58);
 			this->AnswerButton2->TabIndex = 4;
 			this->AnswerButton2->Text = L"Answer 2";
 			this->AnswerButton2->UseVisualStyleBackColor = true;
@@ -131,9 +134,9 @@ namespace QuizApplication {
 			// 
 			// AnswerButton3
 			// 
-			this->AnswerButton3->Location = System::Drawing::Point(353, 344);
+			this->AnswerButton3->Location = System::Drawing::Point(318, 326);
 			this->AnswerButton3->Name = L"AnswerButton3";
-			this->AnswerButton3->Size = System::Drawing::Size(75, 23);
+			this->AnswerButton3->Size = System::Drawing::Size(138, 57);
 			this->AnswerButton3->TabIndex = 5;
 			this->AnswerButton3->Text = L"Answer 3";
 			this->AnswerButton3->UseVisualStyleBackColor = true;
@@ -141,9 +144,9 @@ namespace QuizApplication {
 			// 
 			// AnswerButton4
 			// 
-			this->AnswerButton4->Location = System::Drawing::Point(635, 344);
+			this->AnswerButton4->Location = System::Drawing::Point(613, 326);
 			this->AnswerButton4->Name = L"AnswerButton4";
-			this->AnswerButton4->Size = System::Drawing::Size(75, 23);
+			this->AnswerButton4->Size = System::Drawing::Size(125, 57);
 			this->AnswerButton4->TabIndex = 6;
 			this->AnswerButton4->Text = L"Answer 4";
 			this->AnswerButton4->UseVisualStyleBackColor = true;
@@ -179,9 +182,89 @@ namespace QuizApplication {
 		int counter2 = 0;
 		int score = 0;
 
-	private: System::Void TestForm1_Load(System::Object^ sender, System::EventArgs^ e) {
 		
-		counter = 60;
+
+	private: System::Void TestForm1_Load(System::Object^ sender, System::EventArgs^ e) {
+
+		// Start of question initialization
+		
+		Database db;
+
+		Question question1;
+
+		question1.setText("What is the Powerhouse of the Cell?");
+		question1.setAnswer(1, "Nucleus");
+		question1.setAnswer(2, "Mitochondria");
+		question1.setAnswer(3, "Atom");
+		question1.setAnswer(4, "Blood");
+
+		question1.answer2.SetCorr();
+
+		db.AddNewQuestion(question1);
+
+		Question question2;
+
+		question2.setText("What is the 55 + 192");
+		question2.setAnswer(1, "277");
+		question2.setAnswer(2, "207");
+		question2.setAnswer(3, "247");
+		question2.setAnswer(4, "307");
+
+		question2.answer3.SetCorr();
+
+		db.AddNewQuestion(question2);
+
+		Question question3;
+
+		question3.setText("What Element is the H in H2O?");
+		question3.setAnswer(1, "Hydrogen");
+		question3.setAnswer(2, "Oxygen");
+		question3.setAnswer(3, "Carbon");
+		question3.setAnswer(4, "Peroxide");
+
+		question3.answer1.SetCorr();
+
+		db.AddNewQuestion(question3);
+
+		Question question4;
+
+		question4.setText("What does log mean in mathematics?");
+		question4.setAnswer(1, "Logs");
+		question4.setAnswer(2, "Logistics");
+		question4.setAnswer(3, "Logarithm");
+		question4.setAnswer(4, "Login");
+
+		question4.answer3.SetCorr();
+
+		db.AddNewQuestion(question4);
+
+		Question question5;
+
+		question5.setText("Which Answer is a member of the Animal Kingdom?");
+		question5.setAnswer(1, "Orchid");
+		question5.setAnswer(2, "Rose");
+		question5.setAnswer(3, "Oak");
+		question5.setAnswer(4, "Platypus");
+
+		question5.answer4.SetCorr();
+
+		db.AddNewQuestion(question5);
+
+
+		// End of question initialization
+
+		Question currQuestion = db.GetRandQuestion();
+		
+
+		Answer currAns = currQuestion.getCorrectAnswer();
+
+		string ans1 = currQuestion.getAnswerText(currAns);
+
+		AnswerButton1->Text = "ans1";
+
+		AnswerButton1->Text = "The other one doesnt work";
+
+		counter = 3;
 
 		timerLabel->Text = "60";
 
@@ -199,7 +282,12 @@ namespace QuizApplication {
 			timerLabel->Text = "0";
 			timer1->Stop();
 
-			this->Close();
+			QuestionLabel->Text = "You Lose!";
+
+			AnswerButton1->Visible = false;
+			AnswerButton2->Visible = false;
+			AnswerButton3->Visible = false;
+			AnswerButton4->Visible = false;
 
 		}
 
@@ -217,16 +305,21 @@ namespace QuizApplication {
 
     private: System::Void AnswerButton2_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		QuestionLabel->Text = "Correct Answer !";
+		//QuestionLabel->Text = "Correct Answer !";
 
-		counter2 = 3;
+		//counter2 = 3;
 
-		score++;
-		scoreLabel->Text = score.ToString();
+		//score++;
+		//scoreLabel->Text = score.ToString();
 
-		timer2->Start();
+		//timer2->Start();
 
-		timer1->Stop();
+		//timer1->Stop();
+
+		CorrectAnswer();
+
+		AnswerButton1->Text = "The other one doesnt work";
+
     }
 
     private: System::Void AnswerButton1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -242,12 +335,26 @@ namespace QuizApplication {
 			QuestionLabel->Text = "Question";
 			timer2->Stop();
 
-			counter = 60;
+			counter = 0;
 
 			timer1->Start();
 		}
 
 		counter2--;
     }
+
+		   public: void CorrectAnswer() 
+		   {
+			   QuestionLabel->Text = "Correct Answer !";
+
+			   counter2 = 3;
+
+			   score++;
+			   scoreLabel->Text = score.ToString();
+
+			   timer2->Start();
+
+			   timer1->Stop();
+		   }
 };
 }

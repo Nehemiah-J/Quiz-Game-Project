@@ -42,10 +42,11 @@ namespace QuizApplication {
 		}
 	private: System::Windows::Forms::Button^ startButton;
 	private: System::Windows::Forms::Label^ nameLabel;
-	private: System::Windows::Forms::Label^ TimerLabel;
+
 
 
 	private: System::Windows::Forms::Timer^ timer1;
+	private: System::Windows::Forms::Label^ TimerLabel;
 
 	private: System::ComponentModel::IContainer^ components;
 	protected:
@@ -68,8 +69,8 @@ namespace QuizApplication {
 			this->components = (gcnew System::ComponentModel::Container());
 			this->startButton = (gcnew System::Windows::Forms::Button());
 			this->nameLabel = (gcnew System::Windows::Forms::Label());
-			this->TimerLabel = (gcnew System::Windows::Forms::Label());
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->TimerLabel = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// startButton
@@ -93,6 +94,11 @@ namespace QuizApplication {
 			this->nameLabel->TabIndex = 1;
 			this->nameLabel->Text = L"Nehemiah\'s Quiz Game";
 			// 
+			// timer1
+			// 
+			this->timer1->Interval = 1000;
+			this->timer1->Tick += gcnew System::EventHandler(this, &MyForm::timer1_Tick);
+			// 
 			// TimerLabel
 			// 
 			this->TimerLabel->AutoSize = true;
@@ -102,11 +108,6 @@ namespace QuizApplication {
 			this->TimerLabel->TabIndex = 2;
 			this->TimerLabel->Text = L"Timer";
 			this->TimerLabel->Click += gcnew System::EventHandler(this, &MyForm::TimerLabel_Click);
-			// 
-			// timer1
-			// 
-			this->timer1->Interval = 1000;
-			this->timer1->Tick += gcnew System::EventHandler(this, &MyForm::timer1_Tick);
 			// 
 			// MyForm
 			// 

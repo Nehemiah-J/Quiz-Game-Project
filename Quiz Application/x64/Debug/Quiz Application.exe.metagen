@@ -18,16 +18,24 @@ Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c5619
 	hash=None, flags=None
 Struct Answer: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
   :System.ValueType
+  Methods:
+    <MarshalCopy>(Answer*, Answer*): PrivateScope, Public, Static, SpecialName
+    <MarshalDestroy>(Answer*): PrivateScope, Public, Static, SpecialName
 Class QuizApplication.curGame: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Struct Question: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
   :System.ValueType
-Struct database: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
+  Methods:
+    <MarshalCopy>(Question*, Question*): PrivateScope, Public, Static, SpecialName
+    <MarshalDestroy>(Question*): PrivateScope, Public, Static, SpecialName
+Struct Database: AutoLayout, AnsiClass, Class, Public, SequentialLayout, Sealed, BeforeFieldInit
   :System.ValueType
 Class QuizApplication.TestForm1: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    CorrectAnswer(): PrivateScope, Public, HideBySig
 Class QuizApplication.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
